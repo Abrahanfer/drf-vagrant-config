@@ -124,6 +124,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # First Shell provisioning to update repo & install Git
   config.vm.provision 'shell',
     privileged: true,
-    path: "bootstrap.sh"
+    path: "provisioning/bootstrap.sh"
 
+  config.vm.provision "ansible" do |ansible|
+    ansible.sudo = true
+    ansible.playbook = "provisioning/playbook.yml"
+  end
 end

@@ -1,0 +1,10 @@
+---
+- name: install and update postgresql dependencies
+  apt: pkg=libpq-dev state=latest
+  apt: pkg=python-dev state=latest
+- name: install and update postgresql
+  apt: pkg=postgresql state=latest
+  apt: pkg=postgresql-contrib state=latest
+  notify: restart postgresql
+- name: start postgresql
+  service: name=postgresql state=started

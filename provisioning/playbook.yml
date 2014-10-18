@@ -1,12 +1,4 @@
 ---
 - hosts: all
-  tasks:
-  - name: ensure nginx is the latest version
-    apt: pkg=nginx state=latest
-    notify:
-      - restart nginx
-  - name: ensure nginx is running
-    service: name=nginx state=started
-  handlers:
-    - name: restart nginx
-      service: name=nginx state=restarted
+  roles:
+    - nginx

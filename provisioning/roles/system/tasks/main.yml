@@ -1,3 +1,11 @@
 ---
 - name: update and upgrading packages
   apt: update_cache=yes upgrade=safe
+- name: install software-properties-common
+  apt: pkg=software-properties-common state=latest
+  apt: pkg=python-setuptools state=latest
+- name: install pip3
+  apt: pkg=python3-pip state=latest
+  apt: pkg=python3-setuptools state=latest
+- name: install pip again with easyintall
+  command: python3 -m easy_install pip

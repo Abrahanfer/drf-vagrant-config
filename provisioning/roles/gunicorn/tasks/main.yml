@@ -1,0 +1,7 @@
+---
+- name: install virtualenv
+  pip: executable=pip3 name=virtualenv
+- name: create virtual env and init
+  command: virtualenv "{{ venv_name }}"
+- name: install python3
+  pip: executable=pip3 virtualenv="~/{{ venv_name }}" name=gunicorn

@@ -2,9 +2,16 @@
 - name: install and update postgresql dependencies
   apt: pkg=libpq-dev state=latest
   apt: pkg=python-dev state=latest
+  apt: pkg=python-psycopg2 state=latest
 - name: install and update postgresql
   apt: pkg=postgresql state=latest
   apt: pkg=postgresql-contrib state=latest
   notify: restart postgresql
-- name: start postgresql
-  service: name=postgresql state=started
+- name: ensure the postgreSQL service is running
+  service: name=postgresql state=started enabled=yes
+- name: create db
+  sudo_user: postgres
+  postgresql_db: name="{{ db_name }}"
+- name: create postgresql user and grant access to db
+  sudo_user: postgres
+  postgresql_user: db="{{ db_name }}" name="{{ db_user }}" password="{{ db_pass }}"

@@ -1,0 +1,9 @@
+---
+
+# Database settings
+db_name: "{{ db_name_arg | default('db-drf') }}"
+db_user: "{{ db_user_arg | default('drest') }}"
+db_pass: "{{ db_pass_arg | default('drestpass123') }}"
+
+#Gunicorn & Django
+venv_name: "{{ venv_name_arg | default('gunicorn-env') }}"

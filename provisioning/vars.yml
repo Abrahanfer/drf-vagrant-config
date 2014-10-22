@@ -1,9 +1,16 @@
 ---
 
+#Django
+url_django_project: "~/{{ name_project }}"
+
+#Nginx
+domain: {{ domain_arg | default('192.168.55.55') }}
+static_folder: "{{ url_django_project }}/static/"
+
 # Database settings
 db_name: "{{ db_name_arg | default('db-drf') }}"
 db_user: "{{ db_user_arg | default('drest') }}"
 db_pass: "{{ db_pass_arg | default('drestpass123') }}"
 
-#Gunicorn & Django
+#Gunicorn
 venv_name: "{{ venv_name_arg | default('gunicorn-env') }}"

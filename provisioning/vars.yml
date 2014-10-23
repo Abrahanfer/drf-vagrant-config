@@ -1,10 +1,13 @@
 ---
 
 #Django
+name_project: "{{ name_project_arg | default('test-project') }}"
+name_app: "{{ name_app_arg | default('test-app') }}"
 url_django_project: "~/{{ name_project }}"
+url_django_app: "~/{{ name_project}}/{{ name_app }}"
 
 #Nginx
-domain: {{ domain_arg | default('192.168.55.55') }}
+domain: "{{ domain_arg | default('192.168.55.55') }}"
 static_folder: "{{ url_django_project }}/static/"
 
 # Database settings

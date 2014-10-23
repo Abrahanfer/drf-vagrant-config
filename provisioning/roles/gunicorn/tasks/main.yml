@@ -3,5 +3,11 @@
   pip: executable=pip3 name=virtualenv
 - name: create virtual env and init
   command: virtualenv "{{ venv_name }}"
-- name: install python3
-  pip: executable=pip3 virtualenv="~/{{ venv_name }}" name=gunicorn
+- name: install gunicorn
+  pip: executable=pip3 virtualenv="/home/vagrant/{{ venv_name }}" name=gunicorn
+- name: copying script to execute virtualenv
+  template: src=venv_exec.j2 dest=/home/vagrant/{{ venv_name }}/exec mode=755
+- name: copy template for gunicorn settings
+  template: src=gunicorn-template.j2 dest="/home/vagrant/gunicorn-config"
+- name: start venv for gunicorn
+  command: "/home/vagrant/{{ venv_name }}/exec gunicorn -c gunicorn-config {{ name_app }}/wsgi.py"

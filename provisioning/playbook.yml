@@ -6,5 +6,5 @@
     - system
     - nginx
     - postgresql
+    - django
     - gunicorn
-#    - django

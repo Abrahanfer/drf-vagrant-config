@@ -1,0 +1,5 @@
+---
+- name: install django
+  pip: executable=pip3 virtualenv="/home/vagrant/{{ venv_name }}" name=django
+- name: install django rest framework
+  pip: executable=pip3 virtualenv="/home/vagrant/{{ venv_name }}" name=djangorestframework

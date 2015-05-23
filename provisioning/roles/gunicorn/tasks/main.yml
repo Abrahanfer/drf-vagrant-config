@@ -1,13 +1,15 @@
 ---
-- name: install virtualenv
-  pip: executable=pip3 name=virtualenv
-- name: create virtual env and init
-  command: virtualenv "{{ venv_name }}"
 - name: install gunicorn
+  sudo: yes
   pip: executable=pip3 virtualenv="/home/vagrant/{{ venv_name }}" name=gunicorn
 - name: copying script to execute virtualenv
+  sudo: yes
   template: src=venv_exec.j2 dest=/home/vagrant/{{ venv_name }}/exec mode=755
+- name: django collectstatic
+  command: "/home/vagrant/{{ venv_name }}/exec python {{url_django_project}}/manage.py collectstatic --noinput"
 - name: copy template for gunicorn settings
+  sudo: yes
   template: src=gunicorn-template.j2 dest="/home/vagrant/gunicorn-config"
-- name: start venv for gunicorn
-  command: "/home/vagrant/{{ venv_name }}/exec gunicorn -c gunicorn-config {{ name_app }}/wsgi.py"
+#- name: start project over gunicorn
+  #-c gunicorn-config
+#  command: "/home/vagrant/{{ venv_name }}/exec gunicorn -c gunicorn-config {{ name_app }}.wsgi:application --pythonpath {{url_django_project}}"

@@ -1,11 +1,20 @@
 ---
 - name: update and upgrading packages
+  sudo: yes
   apt: update_cache=yes upgrade=safe
 - name: install software-properties-common
+  sudo: yes
   apt: pkg=software-properties-common state=latest
   apt: pkg=python-setuptools state=latest
 - name: install pip3
+  sudo: yes
   apt: pkg=python3-pip state=latest
   apt: pkg=python3-setuptools state=latest
 - name: install pip again with easyintall
+  sudo: yes
   command: python3 -m easy_install pip
+- name: install git
+  sudo: yes
+  apt: pkg=git state=latest
+- name: clone rep from GitHub
+  git: accept_hostkey=true repo="{{ project_git_url }}" dest="~/{{ name_project }}"

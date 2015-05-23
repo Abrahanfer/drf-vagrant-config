@@ -121,13 +121,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   #   chef.validation_client_name = "ORGNAME-validator"
 
-  # First Shell provisioning to update repo & install Git
-  config.vm.provision 'shell',
-    privileged: true,
-    path: "provisioning/bootstrap.sh"
-
   config.vm.provision "ansible" do |ansible|
-    ansible.sudo = true
+   # ansible.sudo = true
     ansible.extra_vars = { ansible_ssh_user: 'vagrant', remote_user: 'vagrant'}
     ansible.raw_ssh_args = ["-o UserKnownHostsFile=/dev/null"]
     ansible.playbook = "provisioning/playbook.yml"

@@ -1,11 +1,14 @@
 ---
 - name: ensure nginx is the latest version
+  sudo: yes
   apt: pkg=nginx state=latest
   notify: restart nginx
 - name: ensure nginx is running
   service: name=nginx state=started
 - name: copy template for nginx configuration
+  sudo: yes
   template: src="nginx.conf.j2" dest="/etc/nginx/sites-available/drf-settings"
 - name: symlink to sites-enabled
+  sudo: yes
   command: ln -sf /etc/nginx/sites-available/drf-settings /etc/nginx/sites-enabled
   notify: restart nginx

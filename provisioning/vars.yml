@@ -5,11 +5,11 @@ project_git_url: "{{ project_git_url_arg | default('git@github.com:Abrahanfer/ge
 name_project: "{{ name_project_arg | default('geniusfeed') }}"
 name_app: "{{ name_app_arg | default('geniusfeed') }}"
 url_django_project: "/home/vagrant/{{ name_project }}"
-url_django_app: "~/{{ name_project }}/{{ name_app }}"
+url_django_app: "/home/vagrant/{{ name_project }}/{{ name_app }}"
 
 #Nginx
 domain: "{{ domain_arg | default('192.168.55.55') }}"
-static_folder: "{{ name_project }}/static/"
+static_folder: "{{ url_django_project }}/static/"
 
 # Database settings
 db_name: "{{ db_name_arg | default('db-drf') }}"

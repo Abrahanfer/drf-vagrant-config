@@ -12,4 +12,4 @@
   template: src=gunicorn-template.j2 dest="/home/vagrant/gunicorn-config"
 - name: run gunicorn job to serve project
   #-c gunicorn-config
-  shell: "nohup /home/vagrant/{{ venv_name }}/exec gunicorn -c gunicorn-config {{ name_app }}.wsgi:application --pythonpath {{url_django_project}} &"
+  shell: "/home/vagrant/{{ venv_name }}/exec gunicorn -c gunicorn-config {{ name_app }}.wsgi:application --pythonpath {{url_django_project}} --log-level debug --access-logfile gunicorn_access.log --log-file gunicorn_logfile.log --error-logfile gunicorn_errors.log"

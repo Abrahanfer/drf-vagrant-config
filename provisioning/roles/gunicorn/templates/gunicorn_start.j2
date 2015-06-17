@@ -1,11 +1,9 @@
 #!/bin/bash
-
 NAME="{{ name_project }}"
 DJANGODIR={{ url_django_project }}
 USER=vagrant
 NUM_WORKERS=3
 
-echo "Starting $NAME as `whoami`"
 
 # Activate the virtual environment
 source /home/vagrant/{{ venv_name }}/bin/activate

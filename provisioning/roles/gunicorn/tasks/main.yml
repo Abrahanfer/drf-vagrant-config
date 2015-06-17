@@ -10,6 +10,11 @@
 - name: copy template for gunicorn settings
   sudo: yes
   template: src=gunicorn-template.j2 dest="/home/vagrant/gunicorn-config"
-- name: run gunicorn job to serve project
+- name: copy shell script to be run by supervisor #run gunicorn job to serve project
   #-c gunicorn-config
-  shell: "/home/vagrant/{{ venv_name }}/exec gunicorn -c gunicorn-config {{ name_app }}.wsgi:application --pythonpath {{url_django_project}} --log-level debug --access-logfile gunicorn_access.log --log-file gunicorn_logfile.log --error-logfile gunicorn_errors.log"
+  #shell: "/home/vagrant/{{ venv_name }}/exec gunicorn -c gunicorn-config {{ name_app }}.wsgi:application --pythonpath {{url_django_project}} --log-level debug --access-logfile gunicorn_access.log --log-file gunicorn_logfile.log --error-logfile gunicorn_errors.log"
+  #sudo: yes
+  template: src=gunicorn_start.j2 dest="/home/vagrant/gunicorn_start"
+- name: mark as executable shell script
+  #sudo: yes
+  shell: "chmod a+x gunicorn_start"

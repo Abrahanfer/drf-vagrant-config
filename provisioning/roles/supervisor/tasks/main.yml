@@ -1,0 +1,11 @@
+---
+- name: copy template for supervisor run gunicorn
+  sudo: yes
+  template: src="supervisor.conf.j2" dest="/etc/supervisor/conf.d/{{ name_project }}.conf"
+- name: reread files of supervisor
+  sudo: yes
+  supervisorctl: name={{ name_project }} state=present
+- name: start project of supervisor
+  sudo: yes
+  supervisorctl: name={{ name_project }} state=started
+  notify: restart supervisor

@@ -8,6 +8,7 @@
 - name: copy template for nginx configuration
   sudo: yes
   template: src="nginx.conf.j2" dest="/etc/nginx/sites-available/drf-settings"
+  notify: restart nginx
 - name: symlink to sites-enabled
   sudo: yes
   command: ln -sf /etc/nginx/sites-available/drf-settings /etc/nginx/sites-enabled

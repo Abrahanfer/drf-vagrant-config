@@ -1,0 +1,23 @@
+#!/bin/bash
+
+NAME="{{ name_project }}"
+DJANGODIR={{ url_django_project }}
+USER=vagrant
+NUM_WORKERS=3
+
+echo "Starting $NAME as `whoami`"
+
+# Activate the virtual environment
+source /home/vagrant/{{ venv_name }}/bin/activate
+
+#Export pythonpath
+export PYTHONPATH={{ url_django_project }}:$PYTHONPATH
+
+# Start your Django Unicorn
+# Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)
+exec gunicorn -c /home/vagrant/gunicorn-config {{ name_app }}.wsgi:application
+     --pythonpath {{url_django_project}}
+     --log-level debug
+     --access-logfile gunicorn_access.log
+     --log-file gunicorn_logfile.log
+     --error-logfile gunicorn_errors.log

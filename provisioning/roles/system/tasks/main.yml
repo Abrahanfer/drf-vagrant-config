@@ -18,3 +18,9 @@
   apt: pkg=git state=latest
 - name: clone rep from GitHub
   git: accept_hostkey=true repo="{{ project_git_url }}" dest="~/{{ name_project }}"
+- name: ensure supervisor is up to date
+  sudo: yes
+  apt: pkg=supervisor state=latest
+- name: ensure geniusfeed stop
+  sudo: yes
+  supervisorctl: name={{ name_project }} state=stopped

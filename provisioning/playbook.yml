@@ -8,3 +8,4 @@
     - postgresql
     - django
     - gunicorn
+    - supervisor

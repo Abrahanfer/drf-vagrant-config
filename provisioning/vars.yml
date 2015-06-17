@@ -9,7 +9,7 @@ url_django_app: "/home/vagrant/{{ name_project }}/{{ name_app }}"
 
 #Nginx
 domain: "{{ domain_arg | default('192.168.55.55') }}"
-static_folder: "{{ url_django_project }}"
+static_folder: "{{ url_django_project }}/static"
 
 # Database settings
 db_name: "{{ db_name_arg | default('db-drf') }}"

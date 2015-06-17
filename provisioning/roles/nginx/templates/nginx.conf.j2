@@ -6,7 +6,7 @@ server {
         access_log /var/log/nginx/access.log;
 
 
-        location /static/ {
+        location /static {
                 alias {{ static_folder }};
         }
 

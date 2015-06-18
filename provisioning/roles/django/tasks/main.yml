@@ -1,19 +1,25 @@
 ---
 - name: install virtualenv
-  sudo: yes
+  #sudo: yes
   pip: executable=pip3 name=virtualenv
 - name: create virtual env and init
-  sudo: yes
+  #sudo: yes
   command: virtualenv "{{ venv_name }}"
 - name: install django
-  sudo: yes
+  #sudo: yes
   pip: executable=pip3 virtualenv="/home/vagrant/{{ venv_name }}" name=django
 - name: install django rest framework
-  sudo: yes
+  #sudo: yes
   pip: executable=pip3 virtualenv="/home/vagrant/{{ venv_name }}" name=djangorestframework
 - name: install markdown
-  sudo: yes
+  #sudo: yes
   pip: executable=pip3 virtualenv="/home/vagrant/{{ venv_name }}" name=markdown
 - name: install django-filter
-  sudo: yes
+  #sudo: yes
   pip: executable=pip3 virtualenv="/home/vagrant/{{ venv_name }}" name=django-filter
+- name: install dependecies for psycopg2
+  sudo: yes
+  shell: "apt-get -y build-dep python-psycopg2"
+- name: install psycopg2
+  #sudo: yes
+  pip: executable=pip3 virtualenv="/home/vagrant/{{ venv_name }}" name=psycopg2

@@ -9,3 +9,4 @@
     - django
     - gunicorn
     - supervisor
+    - deploy

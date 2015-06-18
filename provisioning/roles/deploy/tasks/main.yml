@@ -1,0 +1,3 @@
+---
+- name: Run django migrate to create tables in DB
+  command: "/home/vagrant/{{ venv_name }}/exec python {{url_django_project}}/manage.py migrate"

@@ -1,6 +1,6 @@
 ---
 - name: install gunicorn
-  sudo: yes
+  #sudo: yes
   pip: executable=pip3 virtualenv="/home/vagrant/{{ venv_name }}" name=gunicorn
 - name: copying script to execute virtualenv
   sudo: yes

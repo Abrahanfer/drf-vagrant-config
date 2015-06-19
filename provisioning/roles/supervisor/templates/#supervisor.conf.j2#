@@ -1,6 +1,0 @@
-[program:{{ name_project }}]
-command = /home/vagrant/gunicorn_start                   ; Command to start app
-user = vagrant                                              ; User to run as
-stdout_logfile = /home/vagrant/gunicorn_supervisor.log   ; Where to write log messages
-redirect_stderr = true                                   ; Save stderr in the same log
-environment=LANG=en_US.UTF-8,LC_ALL=en_US.UTF-8

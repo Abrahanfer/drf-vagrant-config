@@ -1,6 +1,6 @@
 ---
 - name: install virtualenv
-  #sudo: yes
+  sudo: yes
   pip: executable=pip3 name=virtualenv
 - name: create virtual env and init
   #sudo: yes

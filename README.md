@@ -5,6 +5,6 @@ Vagrant & ansible configuration for a Django REST Framework API.
 
 * Nginx
 * PostgreSQL
-* Django & Djang REST Framework
+* Django & Django REST Framework
 * Gunicorn
 * Supervisor

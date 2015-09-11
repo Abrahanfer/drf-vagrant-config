@@ -19,7 +19,7 @@
 - name: Install git
   sudo: yes
   apt: pkg=git state=latest
-- name: Clone rep from GitHub
+- name: Clone rep from BitBucket
   git: accept_hostkey=true repo="{{ project_git_url }}" dest="~/{{ name_project }}"
 - name: Ensure supervisor is up to date
   sudo: yes

@@ -1,7 +1,7 @@
 ---
 
 #Django
-project_git_url: "{{ project_git_url_arg | default('git@github.com:Abrahanfer/geniusfeed.git') }}"
+project_git_url: "{{ project_git_url_arg | default('git@bitbucket.org:abrahanfer/geniusfeed.git') }}"
 name_project: "{{ name_project_arg | default('geniusfeed') }}"
 name_app: "{{ name_app_arg | default('geniusfeed') }}"
 url_django_project: "/home/vagrant/{{ name_project }}"

@@ -27,3 +27,18 @@
 - name: Ensure geniusfeed stop
   sudo: yes
   supervisorctl: name={{ name_project }} state=stopped
+- name: set the fucking locale
+  sudo: yes
+  shell: "export LANG=en_US.UTF-8"
+- name: set the fucking locale
+  sudo: yes
+  shell: "echo 'LANGUAGE=\"en_US.UTF-8\"' >> /etc/default/locale"
+- name: set the fucking locale
+  sudo: yes
+  shell: "echo 'LC_ALL=\"en_US.UTF-8\"' >> /etc/default/locale"
+- name: set the fucking locale
+  sudo: yes
+  shell: "locale-gen 'en_US.UTF-8'"
+- name: set the fucking locale
+  sudo: yes
+  shell: "dpkg-reconfigure locales"

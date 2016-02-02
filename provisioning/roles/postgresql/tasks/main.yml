@@ -3,13 +3,24 @@
   sudo: yes
   apt: pkg=libpq-dev state=latest
   apt: pkg=python-dev state=latest
+- name: Build dependencies for python-psycopg2
+  sudo: yes
+  apt: pkg=python-psycopg2 state=build-dep
+- name: instal python-psycopg2
+  sudo: yes
   apt: pkg=python-psycopg2 state=latest
-- name: install and update postgresql
+- name: Install postgresql
   sudo: yes
   apt: pkg=postgresql state=latest
-  apt: pkg=postgresql-contrib state=latest
   notify: restart postgresql
+- name: Install libpq-dev
+  sudo: yes
+  apt: pkg=libpq-dev state=latest
+- name: PostgreSQL contrib
+  sudo: yes
+  apt: pkg=postgresql-contrib state=latest
 - name: ensure the postgreSQL service is running
+  sudo: yes
   service: name=postgresql state=started enabled=yes
 - name: create db
   postgresql_db: name="{{ db_name }}"

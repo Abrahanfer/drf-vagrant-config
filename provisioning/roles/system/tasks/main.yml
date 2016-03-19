@@ -8,10 +8,14 @@
 - name: Install software-properties-common
   sudo: yes
   apt: pkg=software-properties-common state=latest
+- name: Install python-setuptools
+  sudo: yes
   apt: pkg=python-setuptools state=latest
 - name: Install pip3
   sudo: yes
   apt: pkg=python3-pip state=latest
+- name: Install python3-setuptools
+  sudo: yes
   apt: pkg=python3-setuptools state=latest
 - name: Install pip again with easyintall
   sudo: yes
@@ -27,18 +31,18 @@
 - name: Ensure geniusfeed stop
   sudo: yes
   supervisorctl: name={{ name_project }} state=stopped
-- name: set the fucking locale
+- name: set the locale
   sudo: yes
   shell: "export LANG=en_US.UTF-8"
-- name: set the fucking locale
+- name: set the locale
   sudo: yes
   shell: "echo 'LANGUAGE=\"en_US.UTF-8\"' >> /etc/default/locale"
-- name: set the fucking locale
+- name: set the locale
   sudo: yes
   shell: "echo 'LC_ALL=\"en_US.UTF-8\"' >> /etc/default/locale"
-- name: set the fucking locale
+- name: set the locale
   sudo: yes
   shell: "locale-gen 'en_US.UTF-8'"
-- name: set the fucking locale
+- name: set the locale
   sudo: yes
   shell: "dpkg-reconfigure locales"

@@ -2,6 +2,8 @@
 - name: install and update postgresql dependencies
   sudo: yes
   apt: pkg=libpq-dev state=latest
+- name: install and update python-dev
+  sudo: yes
   apt: pkg=python-dev state=latest
 - name: Build dependencies for python-psycopg2
   sudo: yes

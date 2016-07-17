@@ -28,9 +28,9 @@
 - name: Ensure supervisor is up to date
   sudo: yes
   apt: pkg=supervisor state=latest
-- name: Ensure geniusfeed stop
-  sudo: yes
-  supervisorctl: name={{ name_project }} state=stopped
+#- name: Ensure geniusfeed stop
+#  sudo: yes
+#  supervisorctl: name={{ name_project }} state=stopped
 - name: set the locale
   sudo: yes
   shell: "export LANG=en_US.UTF-8"

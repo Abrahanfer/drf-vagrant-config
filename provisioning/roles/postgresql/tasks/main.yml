@@ -26,9 +26,15 @@
   service: name=postgresql state=started enabled=yes
 - name: create db
   postgresql_db: name="{{ db_name }}"
-  sudo: yes
-  sudo_user: postgres
+  become: yes
+  become_user: postgres
+  become_method: sudo
+  vars:
+    ansible_ssh_pipelining: true
 - name: create postgresql user and grant access to db
   postgresql_user: db="{{ db_name }}" name="{{ db_user }}" password="{{ db_pass }}"
-  sudo: yes
-  sudo_user: postgres
+  become: yes
+  become_user: postgres
+  become_method: sudo
+  vars:
+    ansible_ssh_pipelining: true

@@ -4,11 +4,11 @@
   pip: executable=pip3 name=virtualenv
 - name: create virtual env and init
   #sudo: yes
-  command: virtualenv "{{ venv_name }}"
+  command: virtualenv "{{ venv_name }}" creates="/home/vagrant/{{ venv_name }}"
 - name: install django
   #sudo: yes
  # pip: executable=pip3 virtualenv="/home/vagrant/{{ venv_name }}" name=django
-  pip: virtualenv="/home/vagrant/{{ venv_name }}" name=django
+  pip: virtualenv="/home/vagrant/{{ venv_name }}" name=django version=1.9.9
 - name: install django rest framework
   #sudo: yes
   pip: virtualenv="/home/vagrant/{{ venv_name }}" name=djangorestframework
@@ -24,3 +24,5 @@
 - name: install psycopg2
   #sudo: yes
   pip: virtualenv="/home/vagrant/{{ venv_name }}" name=psycopg2
+- name: install djoser
+  pip: virtualenv="/home/vagrant/{{ venv_name }}" name=djoser

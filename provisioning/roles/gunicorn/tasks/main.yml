@@ -5,6 +5,9 @@
 - name: copying script to execute virtualenv
   sudo: yes
   template: src=venv_exec.j2 dest=/home/vagrant/{{ venv_name }}/exec mode=755
+- name: create django log files
+  file: path=/home/vagrant/gunicorn_error.log state=touch
+  file: path=/home/vagrant/gunicorn_access.log state=touch
 - name: django collectstatic
   command: "/home/vagrant/{{ venv_name }}/exec python {{url_django_project}}/manage.py collectstatic --noinput"
 - name: copy template for gunicorn settings

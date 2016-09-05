@@ -16,6 +16,6 @@ export PYTHONPATH={{ url_django_project }}:$PYTHONPATH
 exec gunicorn -c /home/vagrant/gunicorn-config {{ name_app }}.wsgi:application
      --pythonpath {{url_django_project}}
      --log-level debug
-     --access-logfile gunicorn_access.log
-     --log-file gunicorn_logfile.log
-     --error-logfile gunicorn_errors.log
+     --access-logfile -
+     --log-file -
+     --error-logfile -
